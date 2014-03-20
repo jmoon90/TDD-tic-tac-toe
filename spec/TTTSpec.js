@@ -43,3 +43,17 @@ describe("Render state", function() {
     expect(board.currentState([1,2,3,5])).toEqual(matchBoard);
   });
 });
+
+describe("Play game", function() {
+  it("decides who goes first", function() {
+    var game = new PlayGame();
+    var play_game = game.firstMove();
+    var fp = ''
+    if(counter % 2 == 0) {
+      var fp = "Human";
+    } else {
+      var fp = "Computer";
+    }
+    expect(firstPlayer).toMatch(fp)
+  });
+

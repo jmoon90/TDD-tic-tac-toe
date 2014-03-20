@@ -38,3 +38,16 @@ Board.prototype = {
     return(this.state);
   }
 }
+
+function PlayGame() {
+}
+PlayGame.prototype = {
+  constructor:PlayGame,
+  firstMove:function() {
+    if(players[counter % 2] === 'o') {
+      firstPlayer = 'Human';
+    } else {
+      firstPlayer = 'Computer';
+    }
+    return firstPlayer + ' goes first';
+  },
