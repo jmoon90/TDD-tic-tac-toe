@@ -104,3 +104,7 @@ describe('Game result', function() {
   });
 });
 
+describe('AI moves', function() {
+  xit('places at the best spot', function() {
+  });
+});
