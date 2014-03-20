@@ -40,6 +40,7 @@ Board.prototype = {
 }
 
 function PlayGame() {
+  this.piecesPlayed = [];
 }
 PlayGame.prototype = {
   constructor:PlayGame,
@@ -51,3 +52,18 @@ PlayGame.prototype = {
     }
     return firstPlayer + ' goes first';
   },
+
+  placePiece:function(n) {
+    if(this.piecesPlayed.indexOf(n) >= 0) {
+      return
+    } else {
+      this.piecesPlayed.push(n);
+      if(counter % 2 == 0) {
+        this.playerPieces.push(n)
+      } else {
+        this.computerPieces.push(n)
+      }
+      counter++;
+    }
+  },
+

@@ -57,3 +57,10 @@ describe("Play game", function() {
     expect(firstPlayer).toMatch(fp)
   });
 
+  it("player places piece", function() {
+    var game = new PlayGame();
+    game.placePiece(1);
+
+    expect(game.piecesPlayed).toEqual([1]);
+  });
+
