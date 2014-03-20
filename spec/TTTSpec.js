@@ -85,3 +85,22 @@ describe("Play game", function() {
   });
 });
 
+describe('Game result', function() {
+  it('determines if computer won',function() {
+    var game_result = new GameResult();
+    var play_game = new PlayGame();
+    play_game.computerPieces = [1,4,7];
+    result = game_result.checkHands(play_game.computerPieces);
+    expect(result).toEqual('Would you like to play again?');
+  });
+
+  it('determines if they tied', function() {
+    var game_result = new GameResult();
+    var play_game = new PlayGame();
+    play_game.computerPieces = [1,7,5,6];
+    counter = 11;
+    result = game_result.checkHands(play_game.computerPieces);
+    expect(result).toEqual('Would you like to play again?');
+  });
+});
+

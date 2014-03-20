@@ -104,3 +104,32 @@ PlayGame.prototype = {
   }
 }
 
+function GameResult() {
+                         //check rows
+  this.winningNumbers = [[1,2,3], [4,5,6], [7,8,9],
+                        //check columns
+                        [1,4,7], [2,5,8], [3,6,9],
+                        //check diagonal
+                        [1,5,9], [3,5,7]]
+}
+
+GameResult.prototype = {
+  constructor:GameResult,
+  checkHands:function(hands) {
+    for(i = 0; i < this.winningNumbers.length; i++) {
+      //toString works because I know everything is numbers
+      if(hands.sort().toString() === this.winningNumbers[i].sort().toString()) {
+        print("Computer wins!");
+        return "Would you like to play again?";
+      }
+      if(firstPlayer == 'Human' && counter == 11) {
+         print("Game was Tied");
+         return "Would you like to play again?";
+       } else if(firstPlayer == 'Computer' && counter === 10) {
+         print("Game was Tied");
+         return "Would you like to play again?";
+       }
+    }
+  }
+}
+
