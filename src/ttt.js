@@ -16,3 +16,25 @@ Board.prototype = {
     this.state.push(new_board[2]);
     return new_board
   },
+  currentState:function(array) {
+    if(countPlace === 0) {
+      if(firstPlayer === "Human") {
+        countPlace = 2
+      } else {
+        countPlace = 1
+      }
+    }
+    for(r = 0; r < 3; r++) {
+      for(i = 0; i < 9; i++) {
+        for(a = 0; a < array.length; a++) {
+          if(this.state[r][i] == array[a]){
+            this.state[r][i] = players[countPlace % 2];
+            countPlace++;
+          }
+        }
+      }
+      print(this.state[r]);
+    }
+    return(this.state);
+  }
+}

@@ -17,3 +17,29 @@ describe("Create board", function() {
   });
 });
 
+describe("Render state", function() {
+  it("after each turn", function() {
+    var board = new Board();
+    board.state = [[1,2,3],
+                   [4,5,6],
+                   [7,8,9]]
+    var matchBoard = [['o','x','o'],
+                      [4,5,6],
+                      [7,8,9]]
+
+    expect(board.currentState([1,2,3])).toEqual(matchBoard);
+  });
+
+  it("continus from previous", function() {
+    countPlace = 0
+    var board = new Board();
+    board.state = [[1,2,3],
+                   [4,5,6],
+                   [7,8,9]]
+    var matchBoard = [['o','x','o'],
+                      [4,'x',6],
+                      [7,8,9]]
+
+    expect(board.currentState([1,2,3,5])).toEqual(matchBoard);
+  });
+});
