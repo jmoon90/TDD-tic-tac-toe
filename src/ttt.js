@@ -133,3 +133,11 @@ GameResult.prototype = {
   }
 }
 
+var counter = 2;
+var countPlace = 0
+var firstPlayer = '';
+var players = ['o', 'x'];
+var board = new Board();
+board.newBoard();
+var game = new PlayGame();
+game.runGame();
