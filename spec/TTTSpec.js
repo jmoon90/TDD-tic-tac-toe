@@ -64,3 +64,24 @@ describe("Play game", function() {
     expect(game.piecesPlayed).toEqual([1]);
   });
 
+  it('calls board to render current board state', function() {
+    var game = new PlayGame();
+    counter = 2;
+    game.placePiece(1);
+    game.placePiece(1);
+    game.placePiece(2);
+    pieces = game.piecesPlayed
+
+    expect(pieces).toEqual([1,2]);
+    expect(counter).toEqual(4);
+  });
+
+  it("takes turn playing pieces", function() {
+    counter = 1;
+    game = new PlayGame();
+    game.move()
+
+    expect(counter).toEqual(2)
+  });
+});
+

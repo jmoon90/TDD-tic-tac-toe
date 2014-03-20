@@ -41,9 +41,27 @@ Board.prototype = {
 
 function PlayGame() {
   this.piecesPlayed = [];
+  this.computerPieces = [];
+  this.playerPieces = [];
 }
+
 PlayGame.prototype = {
   constructor:PlayGame,
+  runGame:function(n) {
+    print(game.firstMove());
+    n = 0;
+    //call Game Result needs to
+    //
+    var game_result = new GameResult();
+    while(n < 9) {
+      this.move();
+      this.renderBoard();
+      print("the current count: " +counter);
+      game_result.checkHands(this.computerPieces)
+      n++;
+    }
+  },
+
   firstMove:function() {
     if(players[counter % 2] === 'o') {
       firstPlayer = 'Human';
@@ -66,4 +84,23 @@ PlayGame.prototype = {
       counter++;
     }
   },
+
+  move:function() {
+    if(counter % 2 === 0) {
+      print("Enter number between 1 - 9");
+      var userInput = readline();
+      this.placePiece(userInput)
+    } else {
+      print("Computers turn");
+      var computerInput = readline();
+     // var computerInput = 1;
+      this.placePiece(computerInput)
+    }
+  },
+
+  renderBoard:function() {
+    pieces = this.piecesPlayed;
+    return board.currentState(pieces)
+  }
+}
 
