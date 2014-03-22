@@ -123,6 +123,7 @@ GameResult.prototype = {
       //toString works because I know everything is numbers
       if(hands.sort().toString() === this.winningNumbers[i].sort().toString()) {
         print("Computer wins!");
+        print("Would you like to play again?");
         return "Would you like to play again?";
       }
       if(firstPlayer == 'Human' && counter == 11) {
@@ -130,6 +131,7 @@ GameResult.prototype = {
          return "Would you like to play again?";
        } else if(firstPlayer == 'Computer' && counter === 10) {
          print("Game was Tied");
+         print("Would you like to play again?");
          return "Would you like to play again?";
        }
     }
