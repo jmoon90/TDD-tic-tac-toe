@@ -133,6 +133,141 @@ GameResult.prototype = {
   }
 }
 
+function AI() {
+  this.move = 0;
+}
+
+AI.prototype = {
+  constructor:AI,
+ // bestScore:function() {
+ //   var score = {};
+ //   score[100] = ['x','x','x'];
+ //   score[75] = ['x','x','o'];
+ //   score[75] = ['x','o','x'];
+ //   score[75] = ['o','x','x'];
+ //   score[50] = ['o','o','x'];
+ //   score[50] = ['o','x','o'];
+ //   score[50] = ['x','o','o'];
+ //   score[0]  = ['o','o','o'];
+ // },
+  bestMove:function() {
+    this.base = this.move;
+    if(this.move == undefined) {
+      this.move = 0;
+    }
+    var i = 0;
+    var x = 'x';
+    var o = 'o';
+    while(i < 3) {
+        if(this.base != this.move) {
+        } else {
+          this.checkRowIfSomeoneCanWin(i,x);
+          this.checkColumnIfSomeoneCanWin(i,x);
+          this.checkDiagonalIfSomeoneCanWin(i,x);
+        }
+      i++;
+    };
+    var i = 0;
+    while(i < 3) {
+        if(this.base != this.move) {
+        } else {
+          this.checkRowIfSomeoneCanWin(i,o);
+          this.checkColumnIfSomeoneCanWin(i,o);
+          this.checkDiagonalIfSomeoneCanWin(i,o);
+        }
+      i++;
+    };
+    var i = 0;
+    while(i < 3) {
+      print("board.state[i] "+board.state[i]);
+      print("this.base "+this.base);
+      print("this.move "+this.move);
+      if(this.base != this.move) {
+        return;
+      } else {
+        this.noPlayersHaveAdjacentPieces(i,x);
+      }
+      i++;
+    }
+  },
+  runAI:function() {
+    this.bestMove();
+  },
+  checkRowIfSomeoneCanWin:function(i, p) {
+    var numbers = [];
+    var letters = [];
+    for(n = 0; n < 3; n++) {
+      if(board.state[i][n] != parseInt(board.state[i][n])) {
+        if(board.state[i][n] == p) {
+          letters.push(board.state[i][n]);
+        }
+      } else {
+        numbers.push(board.state[i][n]);
+      }
+    }
+    if(letters.length > 1) {
+      if(numbers[0] != undefined) {
+        return this.move = numbers[0];
+      }
+    }
+  },
+  checkColumnIfSomeoneCanWin:function(i, p) {
+    var numbers = [];
+    var letters = [];
+    for(n = 0; n < 3; n++) {
+      if(board.state[n][i] != parseInt(board.state[n][i])) {
+        if(board.state[n][i] == p) {
+          letters.push(board.state[n][i]);
+        }
+      } else {
+        numbers.push(board.state[n][i]);
+      }
+    }
+    if(letters.length > 1) {
+      if(numbers[0] != undefined) {
+        return this.move = numbers[0];
+      }
+    }
+  },
+  checkDiagonalIfSomeoneCanWin:function(i, p) {
+    if(board.state[0] != undefined) {
+      print("this.move in diagonal "+this.move);
+      if([board.state[0][0] == 1 && board.state[1][1] == p && board.state[2][2]] == p) {
+        return this.move = board.state[0][0];
+      } else if([board.state[0][0] == p && board.state[1][1] == 5 && board.state[2][2]] == p) {
+        return this.move = board.state[1][1];
+      } else if([board.state[0][0] == p && board.state[1][1] == p && board.state[2][2]] == 9) {
+        return this.move = board.state[2][2];
+      } else if([board.state[2][0] == 7 && board.state[1][1] == p && board.state[0][2]] == p) {
+        return this.move = board.state[2][0];
+      } else if([board.state[2][0] == p && board.state[1][1] == 5 && board.state[0][2]] == p) {
+        return this.move = board.state[1][1];
+      } else if([board.state[2][0] == p && board.state[1][1] == p && board.state[0][2]] == 3) {
+        return this.move = board.state[0][2];
+      };
+    };
+  },
+  noPlayersHaveAdjacentPieces:function(r, p) {
+    var i = 0;
+    while(i < 4) {
+      if(board.state[1][1] != 'o' && board.state[1][1] != 'x') {
+        this.move = board.state[1][1];
+      } else {
+        for(n = 0; n < 3; n++) {
+          if(board.state[n].join('').indexOf('x') >= 0) {
+            for(i = 0; i < 3; i++) {
+              if(board.state[n][i] > 0) {
+      print("this.move in noPlayersAdj "+this.move);
+                return this.move = board.state[n][i];
+              }
+            }
+          }
+        }
+      }
+      i++;
+    }
+  }
+}
 var counter = 2;
 var countPlace = 0
 var firstPlayer = '';
