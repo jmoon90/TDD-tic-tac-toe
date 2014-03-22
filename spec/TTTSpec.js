@@ -102,6 +102,10 @@ describe('Game result', function() {
     result = game_result.checkHands(play_game.computerPieces);
     expect(result).toEqual('Would you like to play again?');
   });
+  xit("Need to check these test cases in Game result", function(){
+  });
+});
+
 describe("AI places piece", function() {
   it('prevents Player to win', function() {
     var play_game = new PlayGame();
