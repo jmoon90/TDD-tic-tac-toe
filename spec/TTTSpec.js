@@ -102,6 +102,36 @@ describe('Game result', function() {
     result = game_result.checkHands(play_game.computerPieces);
     expect(result).toEqual('Would you like to play again?');
   });
+describe("AI places piece", function() {
+  it('prevents Player to win', function() {
+    var play_game = new PlayGame();
+
+    play_game.playerPieces = [1,3];
+    play_game.computerPieces = [5];
+
+    board.state[1][1] = 'x';
+    board.state[0][0] = 'o';
+    board.state[0][2] = 'o';
+    play_game.move();
+
+    expect(play_game.computerPieces).toEqual([5,2]);
+  });
+  it('players the most to win', function() {
+    var play_game = new PlayGame();
+
+    play_game.playerPieces = [1,3,9];
+    play_game.computerPieces = [5,2];
+
+    board.state[1][1] = 'x';
+    board.state[0][1] = 'x';
+
+    board.state[0][0] = 'o';
+    board.state[0][2] = 'o';
+    board.state[2][2] = 'o';
+    play_game.move();
+
+    expect(play_game.computerPieces).toEqual([8,5,2]);
+  });
 });
 
 describe('AI moves', function() {
