@@ -56,7 +56,6 @@ PlayGame.prototype = {
     while(n < 9) {
       this.move();
       this.renderBoard();
-      print("the current count: " +counter);
       game_result.checkHands(this.computerPieces)
       n++;
     }
@@ -89,7 +88,7 @@ PlayGame.prototype = {
     if(counter % 2 === 0) {
       print("Enter number between 1 - 9");
       var userInput = readline();
-      this.placePiece(userInput)
+      this.placePiece(userInput);
     } else {
       print("Computers turn");
       var computerInput = readline();
@@ -269,7 +268,7 @@ AI.prototype = {
   }
 }
 var counter = 2;
-var countPlace = 0
+var countPlace = 0;
 var firstPlayer = '';
 var players = ['o', 'x'];
 var board = new Board();
