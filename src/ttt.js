@@ -91,15 +91,19 @@ PlayGame.prototype = {
       this.placePiece(userInput);
     } else {
       print("Computers turn");
-      var computerInput = readline();
-     // var computerInput = 1;
-      this.placePiece(computerInput)
+      this.callAI();
+      this.placePiece(ai.move);
     }
   },
 
   renderBoard:function() {
     pieces = this.piecesPlayed;
     return board.currentState(pieces)
+  },
+
+  callAI:function() {
+    ai = new AI();
+    ai.runAI();
   }
 }
 
