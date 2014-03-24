@@ -198,9 +198,6 @@ AI.prototype = {
     };
     var i = 0;
     while(i < 3) {
-      print("board.state[i] "+board.state[i]);
-      print("this.base "+this.base);
-      print("this.move "+this.move);
       if(this.base != this.move) {
         return;
       } else {
@@ -247,7 +244,6 @@ AI.prototype = {
   },
   checkDiagonalIfSomeoneCanWin:function(i, p) {
     if(board.state[0] != undefined) {
-      print("this.move in diagonal "+this.move);
       if([board.state[0][0] == 1 && board.state[1][1] == p && board.state[2][2]] == p) {
         return this.move = board.state[0][0];
       } else if([board.state[0][0] == p && board.state[1][1] == 5 && board.state[2][2]] == p) {
@@ -273,7 +269,6 @@ AI.prototype = {
           if(board.state[n].join('').indexOf('x') >= 0) {
             for(i = 0; i < 3; i++) {
               if(board.state[n][i] > 0) {
-      print("this.move in noPlayersAdj "+this.move);
                 return this.move = board.state[n][i];
               }
             }
