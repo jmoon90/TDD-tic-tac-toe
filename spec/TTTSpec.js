@@ -129,9 +129,11 @@ describe("AI places piece", function() {
 
     expect(play_game.computerPieces).toEqual([5,2]);
   });
-  it('players the most to win', function() {
+
+  it('place piece to win', function() {
     var play_game = new PlayGame();
 
+    counter = 3;
     play_game.playerPieces = [1,3,9];
     play_game.computerPieces = [5,2];
 
@@ -143,11 +145,21 @@ describe("AI places piece", function() {
     board.state[2][2] = 'o';
     play_game.move();
 
-    expect(play_game.computerPieces).toEqual([8,5,2]);
+    expect(play_game.computerPieces.sort()).toEqual([8,5,2].sort());
   });
-});
 
-describe('AI moves', function() {
-  xit('places at the best spot', function() {
+  it('no adjacent piece, then places piece next to its own to create adjacent', function() {
+    var play_game = new PlayGame();
+    play_game.playerPieces = [1,9];
+    play_game.computerPieces = [5];
+
+    counter = 3;
+    board.state[1][1] = 'x';
+
+    board.state[0][0] = 'o';
+    board.state[2][2] = 'o';
+    play_game.move();
+
+    expect(play_game.computerPieces).toEqual([5, 8]);
   });
 });
