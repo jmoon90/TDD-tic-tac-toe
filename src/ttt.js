@@ -1,5 +1,7 @@
 function Board() {
+  this.players = ['o', 'x'];
   this.state = [];
+  this.countPlace = 0;
 }
 
 Board.prototype = {
@@ -17,19 +19,19 @@ Board.prototype = {
     return new_board
   },
   currentState:function(array) {
-    if(countPlace === 0) {
+    if(this.countPlace === 0) {
       if(firstPlayer === "Human") {
-        countPlace = 2
+        this.countPlace = 2
       } else {
-        countPlace = 1
+        this.countPlace = 1
       }
     }
     for(r = 0; r < 3; r++) {
       for(i = 0; i < 9; i++) {
         for(a = 0; a < array.length; a++) {
           if(this.state[r][i] == array[a]){
-            this.state[r][i] = players[countPlace % 2];
-            countPlace++;
+            this.state[r][i] = this.players[this.countPlace % 2];
+            this.countPlace++;
           }
         }
       }
@@ -43,6 +45,7 @@ function PlayGame() {
   this.piecesPlayed = [];
   this.computerPieces = [];
   this.playerPieces = [];
+  this.players = ['o', 'x'];
 }
 
 PlayGame.prototype = {
@@ -62,8 +65,8 @@ PlayGame.prototype = {
   },
 
   firstMove:function() {
-    if(players[counter % 2] === 'o') {
-      firstPlayer = 'Human';
+    if(this.players[counter % 2] === 'o') {
+      firstPlayer = 'Player';
     } else {
       firstPlayer = 'Computer';
     }
@@ -86,6 +89,7 @@ PlayGame.prototype = {
 
   move:function() {
     if(counter % 2 === 0) {
+      print("Players Turn");
       print("Enter number between 1 - 9");
       var userInput = readline();
       this.placePiece(userInput);
@@ -273,10 +277,9 @@ AI.prototype = {
     }
   }
 }
-var counter = 2;
-var countPlace = 0;
+
+var counter = Math.floor((Math.random()*2)+1);
 var firstPlayer = '';
-var players = ['o', 'x'];
 var board = new Board();
 board.newBoard();
 var game = new PlayGame();
