@@ -23,7 +23,7 @@ describe("Render state", function() {
     board.state = [[1,2,3],
                    [4,5,6],
                    [7,8,9]]
-    var matchBoard = [['o','x','o'],
+    var matchBoard = [['x','o','x'],
                       [4,5,6],
                       [7,8,9]]
 
@@ -31,13 +31,12 @@ describe("Render state", function() {
   });
 
   it("continus from previous", function() {
-    countPlace = 0
     var board = new Board();
     board.state = [[1,2,3],
                    [4,5,6],
                    [7,8,9]]
-    var matchBoard = [['o','x','o'],
-                      [4,'x',6],
+    var matchBoard = [['x','o','x'],
+                      [4,'o',6],
                       [7,8,9]]
 
     expect(board.currentState([1,2,3,5])).toEqual(matchBoard);
@@ -50,7 +49,7 @@ describe("Play game", function() {
     var play_game = game.firstMove();
     var fp = ''
     if(counter % 2 == 0) {
-      var fp = "Human";
+      var fp = "Player";
     } else {
       var fp = "Computer";
     }
