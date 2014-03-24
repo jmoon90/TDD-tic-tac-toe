@@ -165,17 +165,6 @@ function AI() {
 
 AI.prototype = {
   constructor:AI,
- // bestScore:function() {
- //   var score = {};
- //   score[100] = ['x','x','x'];
- //   score[75] = ['x','x','o'];
- //   score[75] = ['x','o','x'];
- //   score[75] = ['o','x','x'];
- //   score[50] = ['o','o','x'];
- //   score[50] = ['o','x','o'];
- //   score[50] = ['x','o','o'];
- //   score[0]  = ['o','o','o'];
- // },
   bestMove:function() {
     this.base = this.move;
     if(this.move == undefined) {
