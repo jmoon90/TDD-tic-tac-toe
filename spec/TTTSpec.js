@@ -104,7 +104,14 @@ describe('Game result', function() {
     game_result.checkHands(play_game.computerPieces);
     expect(game_result.checkHands).toHaveBeenCalledWith(play_game.computerPieces);
   });
-  xit("Need to check these test cases in Game result", function(){
+
+  xit("The game should restart if the user says Yes to playing again", function(){
+    var game_result = new GameResult();
+    var play_game = new PlayGame();
+    play_game.computerPieces = [1,4,7];
+
+    expect(counter).toEqual(2);
+    expect(firstPlayer).toEqual(2);
   });
 });
 
