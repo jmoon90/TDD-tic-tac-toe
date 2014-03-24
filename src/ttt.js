@@ -127,17 +127,34 @@ GameResult.prototype = {
       //toString works because I know everything is numbers
       if(hands.sort().toString() === this.winningNumbers[i].sort().toString()) {
         print("Computer wins!");
-        print("Would you like to play again?");
-        return "Would you like to play again?";
+        this.output();
+      } else if(firstPlayer == 'Human' && counter == 11) {
+        print("Game was Tied");
+         this.output();
+      } else if(firstPlayer == 'Computer' && counter === 10) {
+        print("Game was Tied");
+        this.output();
       }
-      if(firstPlayer == 'Human' && counter == 11) {
-         print("Game was Tied");
-         return "Would you like to play again?";
-       } else if(firstPlayer == 'Computer' && counter === 10) {
-         print("Game was Tied");
-         print("Would you like to play again?");
-         return "Would you like to play again?";
-       }
+    }
+  },
+  newGame:function() {
+    counter = Math.floor((Math.random()*2)+1);
+    countPlace = 0;
+    firstPlayer = '';
+
+    board = new Board();
+    board.newBoard();
+    game = new PlayGame();
+    game.runGame();
+  },
+  output:function() {
+    print("Would you like to play again?('Y' or 'Yes')");
+    var userInput = readline();
+    if(userInput == 'Y' || userInput == 'Yes') {
+      this.newGame();
+    } else {
+      print('Have a nice day');
+      return;
     }
   }
 }
