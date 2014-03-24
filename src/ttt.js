@@ -165,6 +165,10 @@ function AI() {
 
 AI.prototype = {
   constructor:AI,
+  runAI:function() {
+    this.bestMove();
+  },
+
   bestMove:function() {
     this.base = this.move;
     if(this.move == undefined) {
@@ -204,9 +208,6 @@ AI.prototype = {
       }
       i++;
     }
-  },
-  runAI:function() {
-    this.bestMove();
   },
   checkRowIfSomeoneCanWin:function(i, p) {
     var numbers = [];
