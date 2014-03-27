@@ -20,7 +20,7 @@ Board.prototype = {
   },
   currentState:function(array) {
     if(this.countPlace === 0) {
-      if(firstPlayer === "Human") {
+      if(firstPlayer === "Player") {
         this.countPlace = 2
       } else {
         this.countPlace = 1
@@ -128,7 +128,7 @@ GameResult.prototype = {
       if(hands.sort().toString() === this.winningNumbers[i].sort().toString()) {
         print("Computer wins!");
         this.output();
-      } else if(firstPlayer == 'Human' && counter == 11) {
+      } else if(firstPlayer == 'Player' && counter == 11) {
         print("Game was Tied");
          this.output();
       } else if(firstPlayer == 'Computer' && counter === 10) {
@@ -138,7 +138,7 @@ GameResult.prototype = {
     }
   },
   newGame:function() {
-    counter = Math.floor((Math.random()*2)+1);
+    counter = Math.floor((Math.random()*2));
     countPlace = 0;
     firstPlayer = '';
 
@@ -280,7 +280,7 @@ AI.prototype = {
   }
 }
 
-var counter = Math.floor((Math.random()*2)+1);
+var counter = Math.floor((Math.random()*2));
 var firstPlayer = '';
 var board = new Board();
 board.newBoard();
