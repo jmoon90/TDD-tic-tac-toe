@@ -266,12 +266,16 @@ AI.prototype = {
         this.move = board.state[1][1];
       } else {
         for(n = 0; n < 3; n++) {
+          //check row;
           if(board.state[n].join('').indexOf('x') >= 0) {
             for(i = 0; i < 3; i++) {
               if(board.state[n][i] > 0) {
                 return this.move = board.state[n][i];
               }
             }
+          }
+          //check column;
+          if(board.state[i]) {
           }
         }
       }
